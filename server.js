@@ -104,12 +104,11 @@ if (app.get('env') === 'development') {
   app.use(developmentErrors);
 }
 
-const httpsOptions = {
-  cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')),
-  key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
-};
-
 if (process.env.NODE_ENV !== 'production') {
+  const httpsOptions = {
+    cert: fs.readFileSync(path.join(__dirname, 'ssl', 'server.crt')),
+    key: fs.readFileSync(path.join(__dirname, 'ssl', 'server.key'))
+  };
   https.createServer(httpsOptions, app).listen(app.get('port'), () => {
     console.log(`Sever is running on port ${app.get('port')}`);
   });
