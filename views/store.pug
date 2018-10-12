@@ -1,0 +1,57 @@
+extends layout
+
+include mixins/_reviewForm
+include mixins/_review
+
+block content
+  //- pre= h.dump(store)
+  .single
+    .single__hero
+      img.single__image(src=`/images/uploads/${store.photo || 'store.png'}`)
+      h2.title.title--single
+        a(href=`/store/${store.slug}`)= `${store.name} - ${store.author.name}`
+
+    .single__details.inner
+      img.single__map(src=h.staticMap(store.location.coordinates))
+      p.single__location= store.location.address
+
+      if score
+        .reviewer.text-center
+          p
+            span(style="color:#ffc40e") #{parseFloat(score.average).toFixed(2)} / 5 ★ &nbsp;
+            span#nmberOfRating(style="color:#ff3050") #{score.total}
+            |  rating
+
+      p= store.description
+
+      if store.tags
+        ul.tags
+          each tag in store.tags
+            li.tag
+              a.tag__link(href=`/tag/${tag}`)
+                span.tag__text ##{tag}
+
+      if user
+        form#rating.reviewer(action=`/store/${store._id}/rate` method="POST")
+          .reviewer__stars
+            p Your rating:&nbsp;
+            -
+              let rating;
+              if(user.rates.length) {
+                const rate =  user.rates.find(e => e.store.toString() === store._id.toString())
+                if(rate) rating = rate.rating;
+              }
+            each num in [5,4,3,2,1]
+              button(type="button" data-rating=num class=rating==num ? "active" : "") ★
+          input(type="hidden" nane="rating" value=0)
+              //- input(type="radio" required="required" id=`star${num}` name="rating" value=num)
+              //- label(for=`star${num}`) #{num} Stars
+        +reviewForm(store)
+
+      if reviews
+        .reviews
+          each review in reviews
+            .review
+              +review(review)
+        form#loadReview(action=`/store/${store._id}/loadreview`, method="POST")
+          button.btn.btn-block.young-passion-gradient(type="button"): span Load More 10 Reviews

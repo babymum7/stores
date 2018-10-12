@@ -1,0 +1,33 @@
+.btn-rounded {
+  border-radius: 10em;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  transition: transform box-shadow 0.15s ease-in-out;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.btn:active {
+  transform: translateY(-2px);
+}
+
+.btn:hover {
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-floaing {
+  display: inline-block;
+  width: 12rem;
+  height: 3rem;
+  padding: 0;
+  margin-bottom: 1rem;
+}

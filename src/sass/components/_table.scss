@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  td {
+    padding: 5px;
+    text-align: center;
+    color: #212121;
+  }
+  tr {
+    background: linear-gradient(to top, '#fdcbf160' 1%, '#e6dee930' 100%);
+  }
+  tr:nth-child(1) {
+    background: linear-gradient(40deg, '#ff6ec460', '#7873f530') !important;
+  }
+  tr:nth-child(2) {
+    background: linear-gradient(
+      to right,
+      '#ff817760' 0%,
+      '#ff867a60' 0%,
+      '#ff8c7f60' 21%,
+      '#f9918530' 52%,
+      '#cf556c30' 78%,
+      '#b12a5b30' 100%
+    ) !important;
+  }
+  tr:nth-child(3) {
+    background: linear-gradient(40deg, '#ffd86f60', '#fc626230') !important;
+  }
+  // tr:nth-child(even) {
+  // background: white;
+  // }
+  // tr:nth-child(odd):not(:first-child) {
+  // background: #f7f7f7;
+  // }
+  thead tr td {
+    background: $black;
+    color: white;
+  }
+}

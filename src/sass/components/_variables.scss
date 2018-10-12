@@ -1,0 +1,50 @@
+$black: #303030;
+$width: 800px;
+$purple: #262161;
+$yellow: #ffc40e;
+$pink: #ee7297;
+$green: #93ff00;
+$red: #e50714;
+$grey: lighten(grey, 40%);
+$blue: #0d47a1;
+$light-blue: #0099cc;
+$shad: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+$grad: linear-gradient(
+  90deg,
+  #48ded4 0%,
+  #a026bf 20%,
+  #e82c75 60%,
+  $yellow 85%,
+  #48ded4 95%
+);
+$verticalGrad: linear-gradient(
+  0,
+  #48ded4 0%,
+  #a026bf 20%,
+  #e82c75 60%,
+  $yellow 85%,
+  #48ded4 95%
+);
+$peach-gradient: linear-gradient(40deg, #ffd86f, #fc6262) !important;
+$dusty-grass-gradient: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+$z-depth-1: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+$purple-gradient: linear-gradient(40deg, #ff6ec4, #7873f5) !important;
+$young-passion-gradient: linear-gradient(
+  to right,
+  #ff8177 0%,
+  #ff867a 0%,
+  #ff8c7f 21%,
+  #f99185 52%,
+  #cf556c 78%,
+  #b12a5b 100%
+);
+$heavy-rain-gradient: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+$cloudy-knoxville-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+$blue-gradient: linear-gradient(40deg, #45cafc, #303f9f) !important;
+$aqua-gradient: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+$frozen-dreams-gradient: linear-gradient(
+  to top,
+  #fdcbf1 0%,
+  #fdcbf1 1%,
+  #e6dee9 100%
+);

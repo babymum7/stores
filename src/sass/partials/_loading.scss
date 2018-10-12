@@ -1,0 +1,33 @@
+.loading {
+  span {
+    display: inline-block;
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: -30px;
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      // 0px 0px 0px 5px #3b3c3ecc inset;
+      border-radius: 50%;
+      border: 4px solid #adb2bb;
+      border-top-color: #f04a0d;
+      border-right-color: #f04a0d;
+      // border-bottom-color: #515356;
+      // border-left-color: #6b6d72;
+      transform: translateY(-50%) rotate(-45deg);
+      animation: round 1s linear infinite;
+    }
+  }
+}
+
+@keyframes round {
+  from {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(315deg);
+  }
+}
