@@ -35,14 +35,7 @@ exports.isUrlModified = async (req, res, next) => {
 
 exports.updateStore = async (req, res) => {
   const { store } = req;
-  const pathFile = join(
-    __dirname,
-    '..',
-    'public',
-    'images',
-    'uploads',
-    store.photo
-  );
+  const pathFile = `${__dirname}/../public/images/uploads/${store.photo}`;
   if (existsSync(pathFile) && req.file) {
     unlinkSync(pathFile);
   }

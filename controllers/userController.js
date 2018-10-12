@@ -1,5 +1,4 @@
 const { unlinkSync, existsSync } = require('fs');
-const { join } = require('path');
 const User = require('../models/User');
 
 exports.loginForm = (req, res) => {
@@ -31,9 +30,9 @@ exports.updateAccount = async (req, res) => {
     { $set: update },
     { new: true, runValidators: true, context: 'query' }
   );
-  const pathFile = join(__dirname, '..', 'public', 'images');
-  if (existsSync(join(pathFile, 'pictures', req.user.picture))) {
-    unlinkSync(join(pathFile, 'pictures', req.user.picture));
+  const pathFile = `${__dirname}/../public/images/pictures/${req.user.picture}`;
+  if (existsSync(pathFile)) {
+    unlinkSync(pathFile);
   }
   req.flash('success', 'Updated the profile!');
   res.redirect('back');
