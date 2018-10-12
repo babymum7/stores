@@ -61,7 +61,7 @@ const cssExtractLoader = {
   options: { publicPath: '/' }
 };
 
-const styleLoader = 'style-loader';
+// const styleLoader = 'style-loader';
 
 const css = mode => ({
   test: /\.(sa|c|sc)ss$/,
@@ -69,7 +69,7 @@ const css = mode => ({
   use:
     mode === 'development'
       ? [cssExtractLoader, cssLoader(1), sassLoader]
-      : [styleLoader, cssLoader(2), postcssLoader, sassLoader]
+      : [cssExtractLoader, cssLoader(2), postcssLoader, sassLoader]
 });
 
 const font = /\.(eot|ttf|woff|woff2)$/;
