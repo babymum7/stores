@@ -5,10 +5,7 @@ const htmlToText = require('html-to-text');
 const transport = require('./transport');
 
 const generateHTML = (filename, options = {}) => {
-  const html = pug.renderFile(
-    path.join(__dirname, '..', 'views', 'email', `${filename}.pug`),
-    options
-  );
+  const html = pug.renderFile(path.join(__dirname, '..', 'views', 'email', `${filename}.pug`), options);
   const inlined = juice(html);
   return inlined;
 };

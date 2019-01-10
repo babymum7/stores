@@ -1,4 +1,5 @@
 const { unlinkSync, existsSync } = require('fs');
+const { catchErrors } = require('../handlers/errorHandlers');
 const User = require('../models/User');
 
 exports.loginForm = (req, res) => {
@@ -9,14 +10,12 @@ exports.registerForm = (req, res) => {
   res.render('register', { title: 'Register' });
 };
 
-exports.register = async (req, res, next) => {
-  /* eslint-disable */
-  const { name, email, password, subscribe } = req.body;
-  /* eslint-enable */
-  const user = new User({ email, name, subscribe });
+exports.register = catchErrors(async (req, res, next) => {
+  const { name, username, email, password, subscribe } = req.body;
+  const user = new User({ email, name, username, subscribe });
   await User.register(user, password);
   next();
-};
+});
 
 exports.account = (req, res) => {
   res.render('account', { title: 'Edit Your Account' });

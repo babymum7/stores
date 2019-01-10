@@ -1,49 +1,41 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 const passportLocalMongose = require('passport-local-mongoose');
 const validator = require('validator');
 const md5 = require('md5');
 
-const { Schema } = require('mongoose');
-
-const userSchema = new Schema({
-  email: {
+const UserSchema = new Schema({
+  username: {
     type: String,
-    lowercase: true,
     unique: true,
     sparse: true,
     trim: true,
-    maxlength: 100,
-    validate: [validator.isEmail, 'Invalid Email Address']
-  },
-  google: {
-    id: {
-      type: String,
-      unique: true,
-      sparse: true,
-      index: true
-    },
-    email: String,
-    name: {
-      type: String,
-      trim: true
-    },
-    photo: String,
-    url: String
+    lowercase: true,
+    maxlength: 100
   },
   facebook: {
-    id: {
-      type: String,
-      unique: true,
-      sparse: true,
-      index: true
-    },
-    email: String,
-    name: {
-      type: String,
-      trim: true
-    },
-    photo: String,
-    url: String
+    type: String,
+    unique: true,
+    sparse: true,
+    index: true
+  },
+  google: {
+    type: String,
+    unique: true,
+    sparse: true,
+    index: true
+  },
+  twitter: {
+    type: String,
+    unique: true,
+    sparse: true,
+    index: true
+  },
+  email: {
+    type: String,
+    lowercase: true,
+    trim: true,
+    maxlength: 100,
+    validate: [validator.isEmail, 'Invalid Email Address']
   },
   name: {
     type: String,
@@ -51,34 +43,26 @@ const userSchema = new Schema({
     maxlength: 50
   },
   avatar: String,
-  picture: String,
-  hearts: [{ type: Schema.Types.ObjectId, ref: 'Store' }],
-  rates: [
-    {
-      store: {
-        type: Schema.Types.ObjectId,
-        ref: 'Store'
-      },
-      rating: {
-        type: Number,
-        min: 1,
-        max: 5
-      }
-    }
-  ],
   subscribed: { type: Boolean, index: true }
 });
 
-userSchema.index({ 'rates.store': 1 }, { sparse: true });
+UserSchema.pre('save', function() {
+  if (this.avatar) {
+    return;
+  }
+  this.avatar = `https://gravatar.com/avatar/${md5(this.email)}?s=200&d=retro`;
+});
 
-userSchema.plugin(passportLocalMongose, {
-  usernameField: 'email',
+UserSchema.virtual('hearts', {
+  ref: 'Heart',
+  localField: '_id',
+  foreignField: 'user',
+  count: true
+});
+
+UserSchema.plugin(passportLocalMongose, {
+  usernameField: 'username',
   hashField: 'password'
 });
 
-userSchema.virtual('gravatar').get(function() {
-  const hash = md5(this.email);
-  return `https://gravatar.com/avatar/${hash}?s=200&d=retro`;
-});
-
-module.exports = mongoose.model('User', userSchema);
+module.exports = model('User', UserSchema);

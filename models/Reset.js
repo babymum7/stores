@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const { Schema } = mongoose;
-
-const resetSchema = new Schema({
+const ResetSchema = new Schema({
   token: {
     type: String,
     index: true
@@ -17,6 +15,6 @@ const resetSchema = new Schema({
   }
 });
 
-resetSchema.index({ expires: 1 }, { expires: '0' });
+ResetSchema.index({ expires: 1 }, { expires: '0' });
 
-module.exports = mongoose.model('Reset', resetSchema);
+module.exports = model('Reset', ResetSchema);

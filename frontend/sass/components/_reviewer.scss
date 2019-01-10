@@ -1,0 +1,27 @@
+/*
+  Reviewer Form
+ */
+.reviewer {
+  position: relative;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+  p {
+    font-weight: bold;
+    margin: 0;
+  }
+  textarea {
+    border: 0;
+    outline: 0;
+    font-size: 2rem;
+    padding: 2rem;
+    height: 200px;
+  }
+  &__meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid $grey;
+    & > * {
+      flex: 1;
+    }
+  }
+}

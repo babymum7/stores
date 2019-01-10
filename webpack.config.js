@@ -4,123 +4,67 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const devMode = process.env.NODE_ENV;
+const isProd = process.env.NODE_ENV === 'production';
 
-const js = {
-  test: /\.js$/,
-  exclude: /node_modules/,
-  use: [
-    {
-      loader: 'babel-loader',
-      options: {
-        cacheDirectory: true,
-        presets: ['@babel/preset-env'],
-        plugins: [
-          '@babel/plugin-transform-runtime',
-          '@babel/plugin-syntax-dynamic-import'
-        ]
-      }
-    }
-  ]
-};
+module.exports = {
+  mode: isProd ? 'production' : 'development',
 
-const sassLoader = {
-  loader: 'sass-loader'
-};
-
-const postcssLoader = {
-  loader: 'postcss-loader',
-  options: {
-    ident: 'postcss',
-    plugins: () => [
-      require('autoprefixer')(),
-      require('cssnano')()
-      // require('postcss-uncss')({
-      //   html: './src/html/*.html',
-      //   htmlroot: path.resolve(__dirname, 'public'),
-      //   ignore: [
-      //     '.loading',
-      //     '.heart__button--hearted',
-      //     '.heart__button--float',
-      //     '.popup',
-      //     '.active',
-      //     '.search__result--active'
-      //   ]
-      // })
-    ]
-  }
-};
-
-const cssLoader = importLoaders => ({
-  loader: 'css-loader',
-  options: { importLoaders }
-});
-
-const cssExtractLoader = {
-  loader: MiniCssExtractPlugin.loader,
-  options: { publicPath: '/' }
-};
-
-// const styleLoader = 'style-loader';
-
-const css = mode => ({
-  test: /\.(sa|c|sc)ss$/,
-  exclude: /node_modules/,
-  use:
-    mode === 'development'
-      ? [cssExtractLoader, cssLoader(1), sassLoader]
-      : [cssExtractLoader, cssLoader(2), postcssLoader, sassLoader]
-});
-
-const font = /\.(eot|ttf|woff|woff2)$/;
-
-const image = /\.(png|jpe?g|svg)$/;
-
-const handlefile = (regExpFile, typeFile) => ({
-  test: regExpFile,
-  use: [
-    {
-      loader: 'url-loader',
-      options: {
-        limit: 8192,
-        fallback: 'file-loader',
-        name: devMode ? '[name].[ext]' : '[name].[hash].[ext]',
-        outputPath: `${typeFile}s`,
-        publicPath: `/${typeFile}s`
-      }
-    }
-  ]
-});
-
-// prettier-ignore
-const clean = devMode === 'development'
-  ? ['public/!(404.png|images)']
-  : [
-    'public/!(404.png|images)',
-    'public/images/pictures',
-    'public/images/uploads/!(store.png)'
-  ];
-
-module.exports = ({ mode } = { mode: 'development' }) => ({
-  mode,
-
-  entry: { app: './src/js/app.js' },
+  entry: { app: './frontend/js/app.js' },
 
   module: {
-    rules: [handlefile(font, 'font'), handlefile(image, 'image'), css(mode), js]
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] },
+      {
+        test: /\.(sa|c|sc)ss$/,
+        use: isProd
+          ? [
+              { loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' } },
+              { loader: 'css-loader', options: { importLoaders: 2 } },
+              'postcss-loader',
+              'sass-loader'
+            ]
+          : [
+              { loader: MiniCssExtractPlugin.loader, options: { publicPath: '/' } },
+              { loader: 'css-loader', options: { importLoaders: 1 } },
+              'sass-loader'
+            ]
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              fallback: 'file-loader',
+              name: isProd ? '[name].[hash].[ext]' : '[name].[ext]',
+              outputPath: `fonts`,
+              publicPath: `/fonts`
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: isProd ? '[name].[hash].[ext]' : '[name].[ext]',
+              outputPath: `images`,
+              publicPath: `/images`
+            }
+          }
+        ]
+      }
+    ]
   },
 
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: devMode ? '[name].bundle.js' : '[name].[hash].bundle.js',
-    chunkFilename: devMode ? '[name].bundle.js' : '[name].[hash].bundle.js',
+    path: path.join(__dirname, 'public'),
+    filename: isProd ? '[name].[hash].bundle.js' : '[name].bundle.js',
+    chunkFilename: isProd ? '[name].[hash].bundle.js' : '[name].bundle.js',
     publicPath: '/'
-  },
-
-  devtool: devMode ? 'inline-source-map' : 'cheap-module-eval-source-map',
-
-  devServer: {
-    contentBase: './public'
   },
 
   optimization: {
@@ -129,19 +73,21 @@ module.exports = ({ mode } = { mode: 'development' }) => ({
     }
   },
 
+  devtool: isProd ? 'none' : 'cheap-module-eval-source-map',
+
   plugins: [
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css'
+      filename: isProd ? '[name].[hash].css' : '[name].css'
     }),
-    new CleanWebpackPlugin(clean, {
+    new CleanWebpackPlugin(isProd ? ['public/'] : ['public/!(images)'], {
       verbose: false,
       root: __dirname
     }),
     new HtmlWebpackPlugin({
       filename: '../views/layout.pug',
-      favicon: './src/images/icons/doughnut.png',
+      favicon: './frontend/images/favicon/doughnut.png',
       template: './views/template.pug'
     }),
     new webpack.ProgressPlugin()
   ]
-});
+};

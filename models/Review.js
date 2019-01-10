@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const reviewSchema = new Schema({
+const ReviewSchema = new mongoose.Schema({
   created: {
     type: Date,
     default: Date.now
   },
   author: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: [true, 'You must supply an author!']
   },
   store: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     index: true,
     sparse: true,
     ref: 'Store',
@@ -26,18 +24,27 @@ const reviewSchema = new Schema({
   }
 });
 
-reviewSchema.pre('find', function() {
-  this.populate('author', 'name email avatar rates picture -_id');
-});
+ReviewSchema.statics.getReviews = function(storeId, skip = 0, limit = 10) {
+  const id = mongoose.Types.ObjectId(storeId);
+  return this.aggregate([
+    { $match: { store: id } },
+    { $sort: { created: -1 } },
+    { $skip: skip },
+    { $limit: limit },
+    {
+      $lookup: {
+        from: 'rates',
+        let: { storeId: '$store', authorId: '$author' },
+        pipeline: [
+          { $match: { $expr: { $and: [{ $eq: ['$user', '$$authorId'] }, { $eq: ['$store', '$$storeId'] }] } } }
+        ],
+        as: 'rating'
+      }
+    },
+    { $lookup: { from: 'users', localField: 'author', foreignField: '_id', as: 'author' } },
+    { $addFields: { author: { $arrayElemAt: ['$author', 0] }, rating: { $arrayElemAt: ['$rating', 0] } } },
+    { $project: { 'author.name': 1, 'author.avatar': 1, 'author.rating': '$rating.rating', text: 1, created: 1 } }
+  ]);
+};
 
-reviewSchema.virtual('rating').get(function() {
-  const document = this;
-  if (document.author.rates.length) {
-    const rate = document.author.rates.find(
-      e => e.store.toString() === document.store.toString()
-    );
-    if (rate) return rate.rating;
-  }
-});
-
-module.exports = mongoose.model('Review', reviewSchema);
+module.exports = mongoose.model('Review', ReviewSchema);

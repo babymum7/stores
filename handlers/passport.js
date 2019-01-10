@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const { catchErrors } = require('./errorHandlers');
 const User = require('../models/User');
 
 passport.use(User.createStrategy());
@@ -11,32 +12,21 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENTSECRET,
       callbackURL: `${process.env.HOST}/auth/google/callback`
     },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = await User.findOne({ 'google.id': profile.id });
-        if (user) {
-          /* eslint-disable */
-          user.google.photo = profile._json.image.url;
-          /* eslint-enable */
-          await user.save();
-          done(null, user);
-        } else {
-          const newUser = new User();
-          newUser.google.id = profile.id;
-          newUser.subscribed = true;
-          newUser.name = profile.displayName;
-          /* eslint-disable */
-          newUser.google.url = profile._json.url;
-          newUser.google.email = profile._json.emails[0].value;
-          newUser.avatar = profile._json.image.url;
-          /* eslint-enable */
-          await newUser.save();
-          done(null, newUser);
-        }
-      } catch (err) {
-        done(err);
+    catchErrors(async (accessToken, refreshToken, profile, done) => {
+      let user = await User.findOne({ google: profile.id });
+      if (user) {
+        done(null, user);
+      } else {
+        user = new User();
+        user.google = profile.id;
+        user.subscribed = true;
+        user.name = profile.displayName;
+        user.email = profile._json.emails[0].value;
+        user.avatar = profile._json.image.url;
+        await user.save();
+        done(null, user);
       }
-    }
+    })
   )
 );
 
@@ -50,48 +40,35 @@ passport.use(
       enableProof: true,
       profileFields: ['id', 'displayName', 'picture', 'link', 'email']
     },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        const user = await User.findOne({ 'facebook.id': profile.id });
-        if (user) {
-          /* eslint-disable */
-          user.facebook.url = profile._json.link;
-          user.avatar = profile._json.picture.data.url;
-          /* eslint-enable */
-          await user.save();
-          done(null, user);
-        } else {
-          const newUser = new User();
-          newUser.facebook.id = profile.id;
-          newUser.name = profile.displayName;
-          newUser.subscribed = true;
-          /* eslint-disable */
-          newUser.facebook.email = profile._json.email;
-          newUser.avatar = profile._json.picture.data.url;
-          newUser.facebook.url = profile._json.link;
-          /* eslint-enable */
-          await newUser.save();
-          done(null, newUser);
-        }
-      } catch (err) {
-        done(err);
+    catchErrors(async (accessToken, refreshToken, profile, done) => {
+      let user = await User.findOne({ facebook: profile.id });
+      if (user) {
+        done(null, user);
+      } else {
+        user = new User();
+        user.facebook = profile.id;
+        user.name = profile.displayName;
+        user.subscribed = true;
+        user.email = profile._json.email;
+        user.avatar = profile._json.picture.data.url;
+        await user.save();
+        done(null, user);
       }
-    }
+    })
   )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user._id);
 });
-
-passport.deserializeUser(async (user, done) => {
-  try {
-    const returnedUser = await User.findById(user._id);
-    done(null, returnedUser);
-  } catch (err) {
-    done(err);
-  }
-});
-
 // passport.serializeUser(User.serializeUser());
+
+passport.deserializeUser(
+  catchErrors(async (user, done) => {
+    const userDeserialized = await User.findById(user._id)
+      .populate('hearts')
+      .select('name avatar hearts');
+    done(null, userDeserialized);
+  })
+);
 // passport.deserializeUser(User.deserializeUser());

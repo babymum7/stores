@@ -1,6 +1,6 @@
-exports.handleErrors = fn => (req, res, next) => fn(req, res, next).catch(next);
+exports.catchErrors = fn => (...arg) => fn(...arg).catch(arg[arg.length - 1]);
 
-exports.notFound = (req, res, next) => {
+exports.notFound = (req, res) => {
   res.status(404).render('notFound', { message: 'Page not found' });
 };
 

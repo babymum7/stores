@@ -1,24 +1,24 @@
 include _customControlForm
 
 mixin storeForm(store = {})
-  form.card(action=store._id ? `/store/${store._id }/edit`: "/add" method="POST" enctype="multipart/form-data")
-    label(for="name") Name
-    input(type="text" name="name" value=store.name required="required")
-    label(for="description") Description
-    textarea(name="description") #{store.description}
-    label(for="photo") Photo
-    input(type="file" id="photo" name="photo" accept="image/*")
-    if store.photo
-      img(src=`/images/uploads/${store.photo}` alt=store.name width=200)
-    label(for="address") Address
-    input(type="text" id="address" name="location[address]" value=(store.location && store.location.address) required="required")
-    label(for="lng") Address Lng
-    input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required="required")
-    label(for="lat") Address Lat
-    input.mb-4(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]) required="required")
-    - const tags = store.tags || []
-    ul.tags
-      each choice in choices
-        .tag.tag__choice
-          +customControlForm(choice,"tags",choice,choice,tags.includes(choice))
-    button.btn.btn-rounded.btn-block.young-passion-gradient(type="submit") Save →
+	form.card(action=store._id ? `/store/edit/${store._id}`: "/add" method="POST" enctype="multipart/form-data")
+		label(for="name") Name
+		input(type="text" name="name" value=store.name required="required")
+		label(for="description") Description
+		textarea(name="description") #{store.description}
+		label(for="photo") Photo
+		input(type="file" id="photo" name="photo" accept="image/*")
+		if store.photo
+			img(src=`/images/uploads/${store.photo}` alt=store.name width=200)
+		label(for="address") Address
+		input(type="text" id="address" name="location[address]" value=(store.location && store.location.address) required="required")
+		label(for="lng") Address Lng
+		input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]) required="required")
+		label(for="lat") Address Lat
+		input.mb-4(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]) required="required")
+		- const tags = store.tags || []
+		ul.tags
+			each choice in choices
+				.tag.tag__choice
+					+customControlForm(choice,"tags",choice,choice,tags.includes(choice))
+		button.btn.btn-rounded.btn-block.young-passion-gradient(type="submit") Save →

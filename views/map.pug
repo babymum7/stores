@@ -1,13 +1,14 @@
 extends layout
 
 block content
-  .inner
-    h2= title
-    .map
-      .text-right
-        button.mr-3#getLocationStore.You.btn.btn-rounded.purple-gradient Get location of top store
-        button#findPlacesNearYou.btn.btn-rounded.purple-gradient Find all the places near you
-      .autocomplete
-        input.autocomplete__input(type="text" placeholder="Search All Stores Near..." name="geolocate")
-      #map
-        p Loading Map...
+	.inner
+		h2= title
+		.map
+			.text-right
+				span#errorMessage
+				button.mr-3#getLocationStore.You.btn.btn-rounded.purple-gradient Get location of top store
+				button#findPlacesNearYou.btn.btn-rounded.purple-gradient Find all the places near you
+			.autocomplete
+				input.autocomplete__input(type="text" placeholder="Search All Stores Near..." name="geolocate")
+			#map
+				p Loading Map...

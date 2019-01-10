@@ -1,8 +1,6 @@
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
-exports.isObjecIdValid = input => input.match(/^[0-9a-fA-F]{24}$/);
-
 const catchErrors = (req, res, next) => {
   const errorFormatter = ({ msg }) => msg;
   const result = validationResult(req).formatWith(errorFormatter);
@@ -14,15 +12,15 @@ const catchErrors = (req, res, next) => {
 };
 
 exports.register = [
-  body(['email', 'name', 'password', 'password-confirm'])
+  body(['email', 'name', 'username', 'password', 'password-confirm'])
     .exists()
     .not()
     .isEmpty()
     .withMessage('Fields can not be empty'),
-  sanitizeBody('name')
+  sanitizeBody(['name', 'username'])
     .trim()
     .escape(),
-  body('name')
+  body(['name', 'username'])
     .isLength({ max: 50 })
     .withMessage('Name field can not be more than 50 characters'),
   body('email')
@@ -44,6 +42,24 @@ exports.register = [
   catchErrors
 ];
 
+exports.login = [
+  body(['username', 'password'])
+    .exists()
+    .not()
+    .isEmpty()
+    .withMessage('Fields can not be empty'),
+  sanitizeBody('username')
+    .trim()
+    .escape(),
+  body('username')
+    .isLength({ max: 50 })
+    .withMessage('Name field can not be more than 50 characters'),
+  body('password')
+    .isLength({ min: 6 })
+    .withMessage('The password must be at least 6 characters long'),
+  catchErrors
+];
+
 exports.review = [
   body('text')
     .exists()
@@ -54,13 +70,8 @@ exports.review = [
   catchErrors
 ];
 
-exports.store = [
-  body([
-    'name',
-    'location[address]',
-    'location[coordinates][0]',
-    'location[coordinates][1]'
-  ])
+exports.storeFormFields = [
+  body(['name', 'location[address]', 'location[coordinates][0]', 'location[coordinates][1]'])
     .exists()
     .not()
     .isEmpty()

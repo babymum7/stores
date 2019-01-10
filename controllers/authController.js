@@ -3,14 +3,39 @@ const crypto = require('crypto');
 const User = require('../models/User');
 const Reset = require('../models/Reset');
 const send = require('../handlers/mailToResetPassword');
+const isObjecIdValid = require('../lib/isObjecIdValid');
+const Store = require('../models/Store');
+const { catchErrors } = require('../handlers/errorHandlers');
 
 exports.isNotLoggedIn = (req, res, next) => {
   if (req.isUnauthenticated()) {
     return next();
   }
-  req.flash('error', 'Oops you must be logout to do that!');
+  req.flash('error', 'Oops you must be logged out to do that!');
   res.redirect('/');
 };
+
+exports.isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  req.flash('error', 'Oops you must be logged in to do that!');
+  res.redirect('/login');
+};
+
+exports.isOwnStore = catchErrors(async (req, res, next) => {
+  if (!isObjecIdValid(req.params.id)) {
+    req.flash('error', "You don't own this store");
+    return res.redirect('back');
+  }
+  const store = await Store.findOne({ _id: req.params.id, author: req.user._id });
+  if (!store) {
+    req.flash('error', "You don't own this store");
+    return res.redirect('back');
+  }
+  req.store = store;
+  next();
+});
 
 exports.login = passport.authenticate('local', {
   failureRedirect: '/login',
@@ -18,6 +43,12 @@ exports.login = passport.authenticate('local', {
   successRedirect: '/',
   successFlash: 'Welcome!'
 });
+
+exports.logout = (req, res) => {
+  req.logout();
+  req.flash('success', 'You are now logged out!');
+  res.redirect('/');
+};
 
 exports.authGoogle = passport.authenticate('google', {
   scope: ['profile', 'email']
@@ -39,22 +70,6 @@ exports.authFacebookCb = passport.authenticate('facebook', {
   successRedirect: '/',
   successFlash: 'Welcome!'
 });
-
-exports.isLoggedIn = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  req.flash('error', 'Oops you must be logged in to do that!');
-  res.redirect('/login');
-};
-
-exports.logout = (req, res) => {
-  req.logout();
-  delete req.session.passport;
-  req.session.cookie.maxAge = 1000 * 60;
-  req.flash('success', 'You are now logged out!');
-  res.redirect('/');
-};
 
 exports.forgot = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
@@ -111,10 +126,7 @@ exports.update = async (req, res) => {
     if (err) {
       return err;
     }
-    req.flash(
-      'success',
-      '💃 Nice! Your password has been reset! You are now logged in!'
-    );
+    req.flash('success', '💃 Nice! Your password has been reset! You are now logged in!');
     res.redirect('/');
   });
 };
