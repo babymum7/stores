@@ -1,4 +1,4 @@
 mixin customControlForm(id, name, value, text, checked=false)
 	.custom-control
-		input(type="checkbox" id=id name=name value=value checked=checked)
+		input(type="checkbox" id=id name=name value=value checked=name==="remember"?remember:checked)
 		label(for=id) #{text}

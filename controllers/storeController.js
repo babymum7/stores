@@ -13,7 +13,7 @@ const checkHeart = (user, stores) => {
 };
 
 exports.getStoreCards = catchErrors(async (req, res) => {
-  const page = parseInt(req.params.page, 10) || 1;
+  const page = parseInt(req.query.page, 10) || 1;
   const { stores, pages, count } = await Store.getStoreCards(page);
 
   const hearts = await checkHeart(req.user, stores);
@@ -29,7 +29,7 @@ exports.getStoreCards = catchErrors(async (req, res) => {
 
 exports.getStoresCardsByTag = catchErrors(async (req, res) => {
   const { tag } = req.params;
-  const page = parseInt(req.params.page, 10) || 1;
+  const page = parseInt(req.query.page, 10) || 1;
 
   const tagsPromise = Store.getTagsList();
   const storeCardsPromise = Store.getStoreCards(page, { tags: tag || { $exists: true, $ne: [] } });
@@ -48,7 +48,7 @@ exports.getStoresCardsByTag = catchErrors(async (req, res) => {
 });
 
 exports.getStoresByHeart = catchErrors(async (req, res) => {
-  const page = parseInt(req.params.page, 10) || 1;
+  const page = parseInt(req.query.page, 10) || 1;
 
   const { stores, hearts, pages, count } = await Heart.getHeartedStores(req.user.id, page);
 
@@ -91,7 +91,7 @@ exports.editStoreForm = (req, res) => {
 
 exports.updateStore = catchErrors(async (req, res) => {
   const { store } = req;
-  const pathFile = `${__dirname}/../public/images/uploads/${store.photo}`;
+  const pathFile = `${__dirname}/../public/images/uploads/stores/${store.photo}`;
   if (existsSync(pathFile) && req.file) {
     unlinkSync(pathFile);
   }

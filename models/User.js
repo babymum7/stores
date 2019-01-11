@@ -24,12 +24,6 @@ const UserSchema = new Schema({
     sparse: true,
     index: true
   },
-  twitter: {
-    type: String,
-    unique: true,
-    sparse: true,
-    index: true
-  },
   email: {
     type: String,
     lowercase: true,

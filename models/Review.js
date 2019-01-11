@@ -13,7 +13,6 @@ const ReviewSchema = new mongoose.Schema({
   store: {
     type: mongoose.Schema.Types.ObjectId,
     index: true,
-    sparse: true,
     ref: 'Store',
     required: [true, 'You must supply a store!']
   },

@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const { catchErrors } = require('../handlers/errorHandlers');
 const storeController = require('../controllers/storeController');
 const userController = require('../controllers/userController');
+const fileController = require('../controllers/fileController');
 const reviewController = require('../controllers/reviewController');
 const authController = require('../controllers/authController');
-const fileController = require('../controllers/fileController');
 const validateController = require('../controllers/validateController');
 const mapController = require('../controllers/mapController');
 const apiController = require('../controllers/apiController');
@@ -33,16 +32,25 @@ router.get('/store/:slug', storeController.getStore);
 
 // Register Login Logout
 router.get('/register', authController.isNotLoggedIn, userController.registerForm);
-router.post('/register', validateController.register, userController.register, authController.login);
+router.post(
+  '/register',
+  authController.isNotLoggedIn,
+  validateController.register,
+  userController.register,
+  authController.login
+);
 
 router.get('/login', authController.isNotLoggedIn, userController.loginForm);
-router.post('/login', validateController.login, authController.login);
+router.post('/login', authController.isNotLoggedIn, validateController.login, authController.login);
 
 router.get('/auth/google', authController.isNotLoggedIn, authController.authGoogle);
 router.get('/auth/google/callback', authController.isNotLoggedIn, authController.authGoogleCb);
 
 router.get('/auth/facebook', authController.isNotLoggedIn, authController.authFacebook);
 router.get('/auth/facebook/callback', authController.isNotLoggedIn, authController.authFacebookCb);
+
+// router.get('/auth/twitter', authController.isNotLoggedIn, authController.authTwitter);
+// router.get('/auth/twitter/callback', authController.isNotLoggedIn, authController.authTwitterCb);
 
 router.get('/logout', authController.isLoggedIn, authController.logout);
 /* ------- */
@@ -52,9 +60,9 @@ router.get('/add', authController.isLoggedIn, storeController.addStoreForm);
 router.post(
   '/add',
   authController.isLoggedIn,
-  fileController.uploadStoreImage,
+  // must handle file when post with multi-part fisrt so req.body exists
+  fileController.uploadPhoto,
   validateController.storeFormFields,
-  fileController.resizeStoreImage,
   storeController.createStore
 );
 
@@ -63,9 +71,9 @@ router.post(
   '/store/edit/:id',
   authController.isLoggedIn,
   authController.isOwnStore,
-  fileController.uploadStoreImage,
+  // must handle file when post with multi-part fisrt so req.body exists
+  fileController.uploadPhoto,
   validateController.storeFormFields,
-  fileController.resizeStoreImage,
   storeController.updateStore
 );
 /* ------- */
@@ -84,16 +92,20 @@ router.get('/top', storeController.getTopStores);
 
 // Account
 router.get('/account', authController.isLoggedIn, userController.account);
-// router.post(
-//   '/account',
-//   authController.isLoggedIn,
-//   formFileController.upload('picture'),
-//   catchErrors(formFileController.resize('picture', 200, 200, 'pictures')),
-//   userController.updateAccount
-// );
-router.post('/account/forgot', catchErrors(authController.forgot));
-router.get('/account/reset/:token', catchErrors(authController.reset));
-router.post('/account/reset/:token', validateController.confirmedPassword, catchErrors(authController.update));
+router.post(
+  '/account',
+  authController.isLoggedIn,
+  // must handle file when post with multi-part fisrt so req.body exists
+  fileController.uploadAvatar,
+  validateController.account,
+  userController.updateAccount
+);
+/* ------- */
+
+// Forgot password
+router.post('/account/forgotpassword', userController.forgotPassword);
+router.get('/account/resetpassword/:token', userController.resetPassword);
+router.post('/account/resetpassword/:token', validateController.confirmedPassword, userController.updatePassword);
 /* ------- */
 
 /* API */

@@ -6,7 +6,7 @@ include mixins/_review
 block content
 	.single
 		.single__hero
-			img.single__image(src=store.photo ? `/images/uploads/${store.photo}` : "/images/store.png")
+			img.single__image(src=h.showPhoto(store.photo))
 			h2.title.title--single
 				a(href=`/store/${store.slug}`)= `${store.name} - ${store.author.name}`
 
@@ -16,8 +16,8 @@ block content
 
 			if scores
 				.reviewer.text-center.info-store
-					p.rating#nmberOfRating
-						span #{scores.total}
+					p.rating
+						span#nmberOfRating #{scores.total}
 						|  rating
 					p.star #{parseFloat(scores.average).toFixed(2)} / 5 ★
 					if(hearts)

@@ -45,9 +45,9 @@ function loadPlaces(map, lat = 21.0031177, lng = 105.82014079999999, infoWindow,
     const html = marker => `
             <div class="popup">
               <a href="/store/${marker.place.slug}">
-                <img src=${marker.place.photo ? `/images/uploads/${marker.place.photo}` : '/images/store.png'} alt="${
-      marker.place.name
-    }" />
+                <img src=${
+                  marker.place.photo ? `/images/uploads/stores/${marker.place.photo}` : '/images/store.png'
+                } alt="${marker.place.name}" />
                 <p>${marker.place.name} - ${marker.place.location.address}</p>
               </a>
             </div>

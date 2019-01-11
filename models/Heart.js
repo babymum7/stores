@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const HeartSchema = new mongoose.Schema({
   user: {
+    index: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    index: true,
     required: [true, 'You must supply an user']
   },
   store: {
+    index: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Store',
-    index: true,
     required: [true, 'You must supply an store']
   },
   created: {
@@ -18,6 +18,8 @@ const HeartSchema = new mongoose.Schema({
     default: Date.now
   }
 });
+
+HeartSchema.index({ user: 1, store: 1 });
 
 HeartSchema.statics.getScores = function(storeId) {
   const id = mongoose.Types.ObjectId(storeId);
@@ -29,7 +31,7 @@ HeartSchema.statics.getScores = function(storeId) {
 HeartSchema.statics.getHeartedStores = async function(userid, page, limit = 6) {
   const skip = page * limit - limit;
   const heartedStoresPromise = this.find({ user: userid })
-    .populate({ path: 'store', populate: { path: 'author' } })
+    .populate({ path: 'store', populate: { path: 'author reviews' } })
     .sort({ 'store.created': -1 })
     .skip(skip)
     .limit(limit);
@@ -43,7 +45,5 @@ HeartSchema.statics.getHeartedStores = async function(userid, page, limit = 6) {
     count
   };
 };
-
-HeartSchema.index({ user: 1, store: 1 });
 
 module.exports = mongoose.model('Heart', HeartSchema);

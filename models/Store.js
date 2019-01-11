@@ -6,8 +6,8 @@ const StoreSchema = new mongoose.Schema(
   {
     slug: {
       type: String,
-      unique: true,
-      index: true
+      index: true,
+      unique: true
     },
     name: {
       type: String,
@@ -20,12 +20,11 @@ const StoreSchema = new mongoose.Schema(
       trim: true
     },
     tags: {
-      type: [String],
-      index: true
+      index: true,
+      type: [String]
     },
     created: {
       type: Date,
-      index: true,
       default: Date.now
     },
     location: {
@@ -45,6 +44,7 @@ const StoreSchema = new mongoose.Schema(
     },
     photo: String,
     author: {
+      index: true,
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: [true, 'You must supply an author']
@@ -53,18 +53,13 @@ const StoreSchema = new mongoose.Schema(
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-StoreSchema.virtual('totalReview', {
+StoreSchema.virtual('reviews', {
   ref: 'Review',
   localField: '_id',
-  foreignField: 'store',
-  count: true
+  foreignField: 'store'
 });
 
-StoreSchema.index({
-  name: 'text',
-  tags: 'text',
-  description: 'text'
-});
+StoreSchema.index({ name: 'text', tags: 'text', description: 'text' });
 
 StoreSchema.index({ location: '2dsphere' });
 
@@ -79,7 +74,7 @@ StoreSchema.statics.getStoreCards = async function(page, query = {}, limit = 6) 
   const skip = page * limit - limit;
   const storesPromise = this.find(query)
     .populate('author', 'name')
-    .populate('totalReview')
+    .populate('reviews')
     .sort({ created: -1 })
     .skip(skip)
     .limit(limit);

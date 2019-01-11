@@ -12,8 +12,9 @@ block content
 			input.mb-4(type="email" name="email" placeholder="E-mail" required="required")
 			input.mb-4(type="password" name="password" placeholder="Password" required="required")
 			input.mb-4(type="password" name="password-confirm" placeholder="Confirm Password" required="required")
-			.mb-4
+			.login-options.mb-4
 				+customControlForm("subscribeFormNewsletter","subscribe","true","Subscribe to our newsletter")
+				+customControlForm("loginFormRemember","remember","true","Remember me")
 			button.btn.btn-rounded.btn-block.aqua-gradient(type="submit") Sign up
 			p or sign up with:
 			+social()

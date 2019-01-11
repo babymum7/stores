@@ -1,7 +1,7 @@
 mixin review(review)
 	.review__header
 		.review__author
-			img.avatar(src=review.author.avatar)
+			img.avatar(src=h.showAvatar(review.author.avatar))
 			p= review.author.name
 		if review.author.rating
 			.review__stars(title=`Rated ${review.author.rating} our of 5 stars`)

@@ -1,330 +1,443 @@
 [
   {
-    "_id": "58c03ac18060197ca0b52d51",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c03a958060197ca0b52d50",
-    "text": "I tried this place last week and it was incredible! Amazing selection of local and imported brews and the food is to die for! ",
-    "rating": 5,
-    "created": "2017-03-08T17:09:21.627Z"
+    "_id": "5c389608debfbe04a9186ffa",
+    "text": "I tried this place last week and it was incredible! Amazing selection of local and imported brews and the food is to die for!",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c3895a4debfbe04a9186ff2",
+    "created": "2019-01-11T13:11:36.132Z",
+    "__v": 0
   },
   {
-    "_id": "58c03af28060197ca0b52d53",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c03a958060197ca0b52d50",
+    "_id": "5c389612debfbe04a9186ffb",
     "text": "hipsters everywhere",
-    "rating": 1,
-    "created": "2017-03-08T17:10:10.426Z"
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c3895a4debfbe04a9186ff2",
+    "created": "2019-01-11T13:11:46.899Z",
+    "__v": 0
   },
   {
-    "_id": "58c08780bbb1a51e0d43a050",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c065dbbbb1a51e0d43a04f",
-    "text": "Always a great spot to grab a coffee with a friend. ",
-    "rating": 5,
-    "created": "2017-03-08T22:36:48.575Z"
+    "_id": "5c389652debfbe04a9186ffd",
+    "text": "Always a great spot to grab a coffee with a friend.",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c38956cdebfbe04a9186ff1",
+    "created": "2019-01-11T13:12:50.854Z",
+    "__v": 0
   },
   {
-    "_id": "58c08796bbb1a51e0d43a051",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c061518060197ca0b52d5e",
-    "text": "Great ramen, a little pricey for what you get. ",
-    "rating": 3,
-    "created": "2017-03-08T22:37:10.483Z"
+    "_id": "5c389661debfbe04a9186ffe",
+    "text": "Great ramen, a little pricey for what you get.",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c38952bdebfbe04a9186ff0",
+    "created": "2019-01-11T13:13:05.140Z",
+    "__v": 0
   },
   {
-    "_id": "58c087acbbb1a51e0d43a052",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c060e98060197ca0b52d5d",
-    "text": "Tried this place with my wife last week and it was incredible. ",
-    "rating": 4,
-    "created": "2017-03-08T22:37:32.829Z"
+    "_id": "5c389675debfbe04a9187002",
+    "text": "Tried this place with my wife last week and it was incredible.",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c3894f9debfbe04a9186fef",
+    "created": "2019-01-11T13:13:25.688Z",
+    "__v": 0
   },
   {
-    "_id": "58c087b9bbb1a51e0d43a053",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c0609b8060197ca0b52d5c",
-    "text": "Pretty good soups. ",
-    "rating": 3,
-    "created": "2017-03-08T22:37:45.917Z"
+    "_id": "5c389689debfbe04a9187004",
+    "text": "Pretty good soups.",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c3894b0debfbe04a9186fee",
+    "created": "2019-01-11T13:13:45.535Z",
+    "__v": 0
   },
   {
-    "_id": "58c087debbb1a51e0d43a054",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c060558060197ca0b52d5b",
-    "text": "If you need a great place with bangin' food that is open late, look no further than work.  ",
-    "rating": 5,
-    "created": "2017-03-08T22:38:22.858Z"
+    "_id": "5c389c453914830b93dc101a",
+    "text": "If you need a great place with bangin' food that is open late, look no further than work.",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c3897addebfbe04a9187009",
+    "created": "2019-01-11T13:38:13.207Z",
+    "__v": 0
   },
   {
-    "_id": "58c087f4bbb1a51e0d43a055",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05fd08060197ca0b52d5a",
-    "text": "$12 Banana smoothies. I'd skip this one next time. ",
-    "rating": 1,
-    "created": "2017-03-08T22:38:44.128Z"
+    "_id": "5c389c573914830b93dc101c",
+    "text": "$12 Banana smoothies. I'd skip this one next time.",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389788debfbe04a9187008",
+    "created": "2019-01-11T13:38:31.790Z",
+    "__v": 0
   },
   {
-    "_id": "58c0880bbbb1a51e0d43a056",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05f928060197ca0b52d59",
-    "text": "🐔🐔🐔🐔\r\n\r\n🐔🐔🐔🐔🐔\r\n🐔🐔🐔🐔🐔🐔🐔 \r\n🐔🐔🐔\r\n\r\nbok bok bok",
-    "rating": 5,
-    "created": "2017-03-08T22:39:07.295Z"
+    "_id": "5c389c803914830b93dc101e",
+    "text": "🐔🐔🐔🐔\r\n🐔🐔🐔🐔🐔\r\n🐔🐔🐔🐔🐔🐔🐔 \r\n🐔🐔🐔\r\nbok bok bok",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389721debfbe04a9187007",
+    "created": "2019-01-11T13:39:12.312Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08821bbb1a51e0d43a057",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05c208060197ca0b52d58",
-    "text": "Great spot for Brunch 👌 ",
-    "rating": 5,
-    "created": "2017-03-08T22:39:29.383Z"
+    "_id": "5c389c9f3914830b93dc1020",
+    "text": "I only wish I could find them before they were all sold out!",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c3896f3debfbe04a9187006",
+    "created": "2019-01-11T13:39:43.020Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08832bbb1a51e0d43a058",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05bcd8060197ca0b52d57",
-    "text": "I only wish I could find them before they were all sold out! ",
-    "rating": 3,
-    "created": "2017-03-08T22:39:46.011Z"
+    "_id": "5c389ca83914830b93dc1021",
+    "text": "Oysters are amazing here as are the cocktails.",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c3896f3debfbe04a9187006",
+    "created": "2019-01-11T13:39:52.715Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08841bbb1a51e0d43a059",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05b558060197ca0b52d56",
-    "text": "Oysters are amazing here as are the cocktails. ",
-    "rating": 4,
-    "created": "2017-03-08T22:40:01.343Z"
+    "_id": "5c389cb73914830b93dc1023",
+    "text": "A little expensive but the ambiance is great.",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c3896c8debfbe04a9187005",
+    "created": "2019-01-11T13:40:07.225Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c0884fbbb1a51e0d43a05a",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c05aef8060197ca0b52d55",
-    "text": "A little expensive but the ambiance is great. ",
-    "rating": 2,
-    "created": "2017-03-08T22:40:15.413Z"
+    "_id": "5c389d0c3914830b93dc102c",
+    "text": "I ate so much 🐟 here.",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3897addebfbe04a9187009",
+    "created": "2019-01-11T13:41:32.727Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08863bbb1a51e0d43a05b",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c057838060197ca0b52d54",
-    "text": "I ate so much 🐟 here. ",
-    "rating": 5,
-    "created": "2017-03-08T22:40:35.125Z"
+    "_id": "5c389d1a3914830b93dc102e",
+    "text": "I'm not a fancy dude but this place is the cat's meow.",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c389788debfbe04a9187008",
+    "created": "2019-01-11T13:41:46.810Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08878bbb1a51e0d43a05c",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c03a428060197ca0b52d4f",
-    "text": "I'm not a fancy dude but this place is the cat's meow. ",
-    "rating": 5,
-    "created": "2017-03-08T22:40:56.312Z"
+    "_id": "5c389d293914830b93dc1030",
+    "text": "Try the sour patch kids for dessert.",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c389721debfbe04a9187007",
+    "created": "2019-01-11T13:42:01.418Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c0888ebbb1a51e0d43a05d",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c039ee8060197ca0b52d4e",
-    "text": "Try the sour patch kids for dessert. ",
-    "rating": 4,
-    "created": "2017-03-08T22:41:18.506Z"
+    "_id": "5c389d383914830b93dc1032",
+    "text": "My middle name is charcuterie",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3896f3debfbe04a9187006",
+    "created": "2019-01-11T13:42:16.628Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c088a9bbb1a51e0d43a05e",
-    "author": "58c039018060197ca0b52d4c",
-    "store": "58c039938060197ca0b52d4d",
-    "text": "My middle name is charcuterie ",
-    "rating": 4,
-    "created": "2017-03-08T22:41:45.980Z"
-  },
-  {
-    "_id": "58c089e1d1d97c276fd56cd7",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c065dbbbb1a51e0d43a04f",
+    "_id": "5c389d4d3914830b93dc1034",
     "text": "The coffee was too hot!",
-    "rating": 2,
-    "created": "2017-03-08T22:46:57.620Z"
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3896c8debfbe04a9187005",
+    "created": "2019-01-11T13:42:37.076Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c089f9d1d97c276fd56cd8",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c061518060197ca0b52d5e",
-    "text": "Who pays $15 for Mr Noodles?! ",
-    "rating": 2,
-    "created": "2017-03-08T22:47:21.108Z"
+    "_id": "5c389d6b3914830b93dc1036",
+    "text": "The coffee was too hot!",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3895a4debfbe04a9186ff2",
+    "created": "2019-01-11T13:43:07.677Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a07d1d97c276fd56cd9",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c060e98060197ca0b52d5d",
-    "text": "Mary and I enjoyed the wine here. ",
-    "rating": 4,
-    "created": "2017-03-08T22:47:35.931Z"
+    "_id": "5c389d8c3914830b93dc103c",
+    "text": "Mary and I enjoyed the wine here.",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c38956cdebfbe04a9186ff1",
+    "created": "2019-01-11T13:43:40.166Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a2dd1d97c276fd56cda",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c0609b8060197ca0b52d5c",
+    "_id": "5c389daa3914830b93dc103e",
     "text": "Soup was too hot!",
-    "rating": 1,
-    "created": "2017-03-08T22:48:13.246Z"
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c38952bdebfbe04a9186ff0",
+    "created": "2019-01-11T13:44:10.846Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a39d1d97c276fd56cdb",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c060558060197ca0b52d5b",
+    "_id": "5c389dbe3914830b93dc1040",
     "text": "HIPSTERS GET OUT OF MY CITY",
-    "rating": 1,
-    "created": "2017-03-08T22:48:25.816Z"
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3894f9debfbe04a9186fef",
+    "created": "2019-01-11T13:44:30.806Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a4ad1d97c276fd56cdc",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05fd08060197ca0b52d5a",
-    "text": "When I was a kid we ate salad ",
-    "rating": 3,
-    "created": "2017-03-08T22:48:42.444Z"
+    "_id": "5c389dd13914830b93dc1042",
+    "text": "When I was a kid we ate salad",
+    "author": "5c389ce83914830b93dc1024",
+    "store": "5c3894b0debfbe04a9186fee",
+    "created": "2019-01-11T13:44:49.810Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a58d1d97c276fd56cdd",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05f928060197ca0b52d59",
+    "_id": "5c389f1a3914830b93dc104e",
     "text": "Now this is a place that I can get behind!",
-    "rating": 5,
-    "created": "2017-03-08T22:48:56.600Z"
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c389ee93914830b93dc1047",
+    "created": "2019-01-11T13:50:18.484Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a78d1d97c276fd56cde",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05c208060197ca0b52d58",
-    "text": "I like things that are consistent ",
-    "rating": 3,
-    "created": "2017-03-08T22:49:28.910Z"
+    "_id": "5c389f253914830b93dc1050",
+    "text": "I like things that are consistent",
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c389ebe3914830b93dc1046",
+    "created": "2019-01-11T13:50:29.503Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08a86d1d97c276fd56cdf",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05bcd8060197ca0b52d57",
+    "_id": "5c389f313914830b93dc1052",
     "text": "Tim Hortons has nothin' on this monster",
-    "rating": 3,
-    "created": "2017-03-08T22:49:42.879Z"
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c389e913914830b93dc1045",
+    "created": "2019-01-11T13:50:41.673Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08aa1d1d97c276fd56ce0",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05b558060197ca0b52d56",
+    "_id": "5c389f433914830b93dc1054",
     "text": "I ate at this place and I had two black something the next day",
-    "rating": 1,
-    "created": "2017-03-08T22:50:09.568Z"
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c389e5d3914830b93dc1044",
+    "created": "2019-01-11T13:50:59.028Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08ab0d1d97c276fd56ce1",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c05aef8060197ca0b52d55",
+    "_id": "5c389f4c3914830b93dc1056",
     "text": "I prefer Taco Bell",
-    "rating": 3,
-    "created": "2017-03-08T22:50:24.775Z"
+    "author": "5c3895e6debfbe04a9186ff3",
+    "store": "5c389e343914830b93dc1043",
+    "created": "2019-01-11T13:51:08.202Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c08ad2d1d97c276fd56ce2",
-    "author": "58c03ada8060197ca0b52d52",
-    "store": "58c03a428060197ca0b52d4f",
+    "_id": "5c389f763914830b93dc105d",
     "text": "Nice waitress here",
-    "rating": 3,
-    "created": "2017-03-08T22:50:58.807Z"
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389ee93914830b93dc1047",
+    "created": "2019-01-11T13:51:50.173Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a794fb4d61115815f8ae",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c065dbbbb1a51e0d43a04f",
-    "text": "Best coffee in town! ",
-    "rating": 5,
-    "created": "2017-03-13T14:07:16.529Z"
+    "_id": "5c389f833914830b93dc105f",
+    "text": "Best coffee in town!",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389ebe3914830b93dc1046",
+    "created": "2019-01-11T13:52:03.419Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a812fb4d61115815f8af",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c061518060197ca0b52d5e",
-    "text": "I could eat ramen eggs all day long 🥚🥚🥚🥚🥚",
-    "rating": 5,
-    "created": "2017-03-13T14:09:22.108Z"
-  },
-  {
-    "_id": "58c6a826fb4d61115815f8b0",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c060e98060197ca0b52d5d",
+    "_id": "5c38a1c5485d650e696711d9",
     "text": "🍕🍕🍕🍕 This pizza is the 💣",
-    "rating": 5,
-    "created": "2017-03-13T14:09:42.397Z"
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389e5d3914830b93dc1044",
+    "created": "2019-01-11T14:01:41.022Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a836fb4d61115815f8b1",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c0609b8060197ca0b52d5c",
-    "text": "Meh Soup ",
-    "rating": 3,
-    "created": "2017-03-13T14:09:58.884Z"
+    "_id": "5c38a1f0485d650e696711db",
+    "text": "Meh Soup",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c389e343914830b93dc1043",
+    "created": "2019-01-11T14:02:24.779Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a853fb4d61115815f8b2",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c060558060197ca0b52d5b",
-    "text": "Nothing better than a PBR after a long day of social media ",
-    "rating": 3,
-    "created": "2017-03-13T14:10:27.885Z"
+    "_id": "5c38a29e485d650e696711e5",
+    "text": "Nothing better than a PBR after a long day of social media",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389ee93914830b93dc1047",
+    "created": "2019-01-11T14:05:18.326Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a88afb4d61115815f8b3",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05fd08060197ca0b52d5a",
-    "text": "👎🏻 Too Expensive ",
-    "rating": 1,
-    "created": "2017-03-13T14:11:22.546Z"
+    "_id": "5c38a2b1485d650e696711e7",
+    "text": "👎🏻 Too Expensive",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389ebe3914830b93dc1046",
+    "created": "2019-01-11T14:05:37.871Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a8aafb4d61115815f8b4",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05f928060197ca0b52d59",
+    "_id": "5c38a2bf485d650e696711e9",
     "text": "🐔 A+ Chicken",
-    "rating": 5,
-    "created": "2017-03-13T14:11:54.848Z"
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389e913914830b93dc1045",
+    "created": "2019-01-11T14:05:51.809Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a8b8fb4d61115815f8b5",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05c208060197ca0b52d58",
+    "_id": "5c38a2cc485d650e696711eb",
     "text": "Eggs Benny 🍳",
-    "rating": 4,
-    "created": "2017-03-13T14:12:08.255Z"
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389e5d3914830b93dc1044",
+    "created": "2019-01-11T14:06:04.106Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a8cefb4d61115815f8b6",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05bcd8060197ca0b52d57",
-    "text": "The best doughnuts in the world 🍩 ",
-    "rating": 5,
-    "created": "2017-03-13T14:12:30.578Z"
+    "_id": "5c38a2d9485d650e696711ed",
+    "text": "The best doughnuts in the world 🍩",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389e343914830b93dc1043",
+    "created": "2019-01-11T14:06:17.427Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a8e5fb4d61115815f8b7",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05b558060197ca0b52d56",
-    "text": "Fantastic Selection of cocktails ",
-    "rating": 4,
-    "created": "2017-03-13T14:12:53.559Z"
+    "_id": "5c38a2e6485d650e696711ef",
+    "text": "Fantastic Selection of cocktails",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3897addebfbe04a9187009",
+    "created": "2019-01-11T14:06:30.273Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a8f6fb4d61115815f8b8",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c05aef8060197ca0b52d55",
-    "text": "I could eat these tacos every day for the rest of my life ",
-    "rating": 4,
-    "created": "2017-03-13T14:13:10.681Z"
+    "_id": "5c38a30e485d650e696711fa",
+    "text": "I could eat these tacos every day for the rest of my life",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389788debfbe04a9187008",
+    "created": "2019-01-11T14:07:10.177Z",
+    "__v": 0
   },
+
   {
-    "_id": "58c6a907fb4d61115815f8b9",
-    "author": "58c08bbed1d97c276fd56ce3",
-    "store": "58c057838060197ca0b52d54",
-    "text": "Pretty good but not worth the hype. ",
-    "rating": 2,
-    "created": "2017-03-13T14:13:27.242Z"
+    "_id": "5c38a31e485d650e696711fc",
+    "text": "Pretty good but not worth the hype.",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c389721debfbe04a9187007",
+    "created": "2019-01-11T14:07:26.598Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a338485d650e696711fe",
+    "text": "Pretty good but not worth the hype.",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3896f3debfbe04a9187006",
+    "created": "2019-01-11T14:07:52.747Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a347485d650e69671200",
+    "text": "I could eat these tacos every day for the rest of my life",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3896c8debfbe04a9187005",
+    "created": "2019-01-11T14:08:07.854Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a355485d650e69671202",
+    "text": "Fantastic Selection of cocktails",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3895a4debfbe04a9186ff2",
+    "created": "2019-01-11T14:08:21.112Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a365485d650e69671204",
+    "text": "The best doughnuts in the world 🍩",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c38956cdebfbe04a9186ff1",
+    "created": "2019-01-11T14:08:37.947Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a37f485d650e69671206",
+    "text": "Eggs Benny 🍳",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c38952bdebfbe04a9186ff0",
+    "created": "2019-01-11T14:09:03.219Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a397485d650e69671208",
+    "text": "🐔 A+ Chicken",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3894f9debfbe04a9186fef",
+    "created": "2019-01-11T14:09:27.344Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a3a4485d650e6967120a",
+    "text": "👎🏻 Too Expensive",
+    "author": "5c38a27b485d650e696711dd",
+    "store": "5c3894b0debfbe04a9186fee",
+    "created": "2019-01-11T14:09:40.132Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a5e6d12c740f88cb9364",
+    "text": "Nothing better than a PBR after a long day of social media",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c38a5b6d12c740f88cb935d",
+    "created": "2019-01-11T14:19:18.947Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a5f4d12c740f88cb9366",
+    "text": "Meh Soup",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c38a4ddd12c740f88cb935c",
+    "created": "2019-01-11T14:19:32.164Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a602d12c740f88cb9368",
+    "text": "🍕🍕🍕🍕 This pizza is the 💣",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c38a467d12c740f88cb935b",
+    "created": "2019-01-11T14:19:46.996Z",
+    "__v": 0
+  },
+
+  {
+    "_id": "5c38a60dd12c740f88cb936a",
+    "text": "I could eat ramen eggs all day long 🥚🥚🥚🥚🥚",
+    "author": "5c38876ab8b7622de1d062ca",
+    "store": "5c38a434d12c740f88cb935a",
+    "created": "2019-01-11T14:19:57.445Z",
+    "__v": 0
   }
 ]

@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+const validator = require('validator');
 
 const catchErrors = (req, res, next) => {
   const errorFormatter = ({ msg }) => msg;
@@ -41,6 +42,67 @@ exports.register = [
     .withMessage('Oops! Your passwords do not match'),
   catchErrors
 ];
+
+exports.account = (req, res, next) => {
+  let { email, name } = req.body;
+  const { avatar, password } = req.body;
+  const passwordConfirm = req.body['password-confirm'];
+  const oldPassword = req.body['old-password'];
+  email = email && email.trim();
+  name = name && name.trim();
+
+  if (!email || !name) {
+    req.flash('error', 'Email or Name filed can not be empty');
+    return res.redirect('back');
+  }
+
+  if (email !== req.user.email) {
+    if (!validator.isEmail(email)) {
+      req.flash('error', 'You must supply a vaild email');
+      return res.redirect('back');
+    }
+    if (!validator.isLength(email, { max: 100 })) {
+      req.flash('error', 'Email field can not be more than 100 characters');
+      return res.redirect('back');
+    }
+    email = validator.normalizeEmail(email, {
+      gmail_remove_dots: false,
+      remove_extension: false,
+      gmail_remove_subaddress: false
+    });
+  }
+
+  if (name !== req.user.name) {
+    if (!validator.isLength(name, { max: 50 })) {
+      req.flash('error', 'Name field can not be more than 50 characters');
+      return res.redirect('back');
+    }
+    name = validator.escape(name);
+  }
+
+  if (password) {
+    if (!oldPassword) {
+      req.flash('error', 'You must supply old password to change pasword');
+      return res.redirect('back');
+    }
+
+    if (!validator.isLength(password, { min: 6 })) {
+      req.flash('error', 'The password must be at least 6 characters long');
+      return res.redirect('back');
+    }
+    if (!(passwordConfirm === password)) {
+      req.flash('error', 'Oops! Your passwords do not match');
+      return res.redirect('back');
+    }
+  }
+
+  if (!avatar && email === req.user.email && name === req.user.name && !password) {
+    req.flash('info', "Your infomation didn't change");
+    return res.redirect('back');
+  }
+
+  next();
+};
 
 exports.login = [
   body(['username', 'password'])

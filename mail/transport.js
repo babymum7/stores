@@ -36,7 +36,7 @@ const transportOptionsDevelopment = {
 };
 
 const transport = nodemailer.createTransport(
-  process.env.NODE_ENV === 'development' ? transportOptionsDevelopment : transportOptionsProductions
+  process.env.NODE_ENV !== 'production' ? transportOptionsDevelopment : transportOptionsProductions
 );
 
 module.exports = transport;

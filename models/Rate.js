@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const RateSchema = new mongoose.Schema({
   user: {
+    index: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    index: true,
     required: [true, 'You must supply an user']
   },
   store: {
+    index: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Store',
-    index: true,
     required: [true, 'You must supply an store']
   },
   rating: {
@@ -24,11 +24,13 @@ const RateSchema = new mongoose.Schema({
   }
 });
 
+RateSchema.index({ user: 1, store: 1 });
+
 RateSchema.statics.getScores = function(storeId) {
   const id = mongoose.Types.ObjectId(storeId);
   return this.aggregate([
     { $match: { store: id } },
-    { $group: { _id: null, total: { $sum: '$rating' }, average: { $avg: '$rating' } } }
+    { $group: { _id: null, total: { $sum: { $literal: 1 } }, average: { $avg: '$rating' } } }
   ]).then(results => results[0]);
 };
 
@@ -49,7 +51,5 @@ RateSchema.statics.getCoorTopStore = function() {
     { $project: { 'store.location.coordinates': 1, _id: 0 } }
   ]).then(results => results[0]);
 };
-
-RateSchema.index({ user: 1, store: 1 });
 
 module.exports = mongoose.model('Rate', RateSchema);

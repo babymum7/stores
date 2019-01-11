@@ -1,11 +1,12 @@
-const { transport } = require('./mailToResetPassword');
+const transport = require('./transport');
 const User = require('../models/User');
 
-User.find({ subscribe: true }).then(users => {
-  const emails = users.map(e => e.mail || e.google.email || e.facebook.email);
+User.find({ subscribed: true }).then(users => {
+  const emails = users.map(user => user.email);
+  console.log(emails);
   const options = {
-    form: 'Trong Nguyen <testemail.stores@gmail.com>',
-    bcc: emails,
+    from: 'Trong Nguyen <testemail.stores@gmail.com>',
+    to: emails,
     subject: 'Daily news',
     html: '<h1>Our latest news</h1>',
     text: 'Our latest news'

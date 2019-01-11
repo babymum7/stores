@@ -1,16 +1,21 @@
 extends layout
 
 block content
-  .inner
-    h2 Edit Your Account
-    form(action="/account" method="POST" enctype="multipart/form-data")
-      label(for="picture") Upadate Your Picture
-      p!= "<strong>Note:</Strong> You should upload image have width and height are the same, otherwise image will be scale"
-      input(type="file" id="picture" name="picture" accept="image/*")
-      if user.picture
-        img(src=`/images/pictures/${user.picture}` alt="User picture" width=200)
-      label(for="name") Name
-      input(type="text" name="name" value=user.name)
-      label(for="email") Email Address
-      input.mb-4(type="email" name="email" value=user.email)
-      button.btn.btn-rounded.btn-block.aqua-gradient(type="submit") Update My Account
+	.inner
+		h2 Edit Your Account
+		form(action="/account" method="POST" enctype="multipart/form-data")
+			label(for="avatar") Upadate Your avatar
+			p!= "<strong>Note:</Strong> You should upload image have width and height are the same, otherwise image will be scale"
+			input(type="file" id="avatar" name="avatar" accept="image/*")
+			img(src=h.showAvatar(user.avatar) alt="User avatar" width=200)
+			label(for="name") Name
+			input(type="text" name="name" value=user.name)
+			label(for="email") Email Address
+			input(type="email" name="email" value=user.email)
+			label(for="old-password") Old Password
+			input(type="password" name="old-password")
+			label(for="password") New Password
+			input(type="password" name="password")
+			label(for="password-confirm") Confirm Password
+			input.mb-4(type="password" name="password-confirm")
+			button.btn.btn-rounded.btn-block.aqua-gradient(type="submit") Update My Account

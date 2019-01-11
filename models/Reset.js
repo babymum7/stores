@@ -10,6 +10,7 @@ const ResetSchema = new Schema({
     default: Date.now() + 1000 * 60 * 5
   },
   user: {
+    index: true,
     type: Schema.Types.ObjectId,
     ref: 'User'
   }

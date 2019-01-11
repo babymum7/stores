@@ -18,7 +18,7 @@ block content
 					tr
 						td
 							a(href=`/store/${store.slug}`)
-								img(width=200 src=store.photo ? `/images/uploads/${store.photo}` : "/images/store.png" alt=store.name)
+								img(width=200 src=h.showPhoto(store.photo) alt=store.name)
 						td(style="color:#cc0000") #{i + 1}
 						td: a(href=`/store/${store.slug}` style="color:#0d47a1")= store.name
 						td= store.reviews

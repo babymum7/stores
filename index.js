@@ -1,4 +1,9 @@
 const path = require('path');
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ path: path.join(__dirname, 'development.env') });
+}
+
 const https = require('https');
 const fs = require('fs');
 const express = require('express');
@@ -12,17 +17,17 @@ const choices = require('./data/choices');
 const { notFound, developmentErrors, productionErrors } = require('./handlers/errorHandlers');
 const router = require('./routers/routers');
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config({ path: path.join(__dirname, 'variables.env') });
-}
-
 require('./models/User');
 require('./models/Store');
+require('./models/Heart');
+require('./models/Rate');
+require('./models/Review');
+require('./models/Reset');
+
 require('./handlers/passport');
 
 const app = express();
 
-mongoose.Promise = global.Promise;
 mongoose
   .connect(
     process.env.DATABASE,
@@ -31,12 +36,13 @@ mongoose
   .catch(err => {
     console.error(`🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
   });
+mongoose.Promise = global.Promise;
 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 // Auto send email for users subscribed
-// require('./handlers/automail');
+// require('./mail/autoMail');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -50,7 +56,7 @@ app.use(
   session({
     secret: process.env.SECRET,
     name: 'st',
-    cookie: { maxAge: 1000 * 60 * 3, sameSite: true },
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 * 3, sameSite: true },
     resave: false,
     saveUninitialized: false,
     store: new MongoDBStore({
@@ -78,6 +84,7 @@ app.use((req, res, next) => {
   res.locals.h = helpers;
   res.locals.user = req.user || null;
   res.locals.path = req.path;
+  res.locals.remember = req.session.remember;
   res.locals.flashes = req.flash();
   res.locals.choices = choices;
   next();
