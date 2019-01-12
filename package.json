@@ -17,6 +17,7 @@
     "dev:fe:w": "webpack -w --display-max-modules 0",
     "loadsample": "node ./data/load-sample-data.js",
     "blowitallaway": "node ./data/load-sample-data.js --delete",
+    "loadsampleprod": "NODE_ENV=production yarn blowitallaway && NODE_ENV=production yarn loadsample",
     "check": "eslint --ignore-pattern public/ --ignore-pattern node_modules/ \"./**/*.js\"",
     "fix": "eslint --ignore-pattern public/ --ignore-pattern node_modules/ --fix \"./**/*.js\"",
     "prod": "NODE_ENV=production webpack && node purgecss.js"

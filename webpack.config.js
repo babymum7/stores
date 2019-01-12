@@ -45,12 +45,25 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpe?g|svg)$/,
+        test: /\.svg$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: isProd ? '[name].[hash].[ext]' : '[name].[ext]',
+              outputPath: `images`,
+              publicPath: `/images`
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
               outputPath: `images`,
               publicPath: `/images`
             }
@@ -86,7 +99,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: '../views/layout.pug',
       favicon: './frontend/images/favicon/doughnut.png',
-      template: './views/template.pug'
+      template: './views/template.pug',
+      minify: false
     }),
     new webpack.ProgressPlugin()
   ]

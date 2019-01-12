@@ -1,1 +1,68 @@
-<head><link rel="shortcut icon" href="/doughnut.png"><link href="/app.845fc11941990851ebf6.css" rel="stylesheet"></head><!doctype html> html(lang="en") head meta(charset="UTF-8") meta(name="viewport", content="width=device-width, initial-scale=1.0") meta(http-equiv="X-UA-Compatible", content="ie=edge") title #{title || h.siteName} script(type="text/javascript"). if (window.location.hash && window.location.hash == '#_=_') { if (window.history && history.pushState) { window.history.pushState("", document.title, window.location.pathname); } else { // Prevent scrolling by storing the page's current scroll offset var scroll = { top: document.body.scrollTop, left: document.body.scrollLeft }; window.location.hash = ''; // Restore the scroll offset, should be flicker free document.body.scrollTop = scroll.top; document.body.scrollLeft = scroll.left; } } body block header header.top nav.nav .nav__section.nav__section--pages li.nav__item: a.nav__link.nav__link--logo(href="/") !{h.icon("logo")} each item in h.menu li.nav__item a.nav__link(href=item.slug class=path.startsWith(item.slug)?"nav__link--active":"") !{h.icon(item.icon)} span #{item.title} .nav__section.nav__section--search .search input.search__input(type="text" name="search" placeholder="Coffee, beer...") .search__results .nav__section.nav__section--user if user li.nav__item: a.nav__link(href="/hearts" class=(path.startsWith("/hearts") ? "nav__link--active" : "")) !{h.icon("heart")} span.heart-count #{user.hearts && user.hearts} li.nav__item: a.nav__link(href="/logout" class=(path.startsWith("/logout") ? "nav__link--active" : "")) !{h.icon("logout")} span Logout li.nav__item: a.nav__link(href="/account" class=(path.startsWith("/account") ? "nav__link--active" : "")) img.avatar(src=h.showAvatar(user.avatar)) else li.nav__item: a.nav__link(href="/register" class=(path.startsWith("/register") ? "nav__link--active" : "")) Register li.nav__item: a.nav__link(href="/login" class=(path.startsWith("/login") ? "nav__link--active" : "")) Log In block messages if flashes .inner .flash-messages each category in Object.keys(flashes) each message,index in flashes[category] .flash(class=`flash--${category}` id=`${category}${index}`) p.flash__text !{h.pureDom(message,{ALLOWED_TAGS: ["p","#text","strong","a"]})} script(type="text/javascript") setTimeout(()=>document.querySelector("##{`${category}${index}`}").remove(),15000); button.flash__remove(onClick="this.parentElement.remove()") &times; block content footer block footer p.text-center (C) wes bos script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)<script src="/vendors~app.845fc11941990851ebf6.bundle.js"></script><script src="/app.845fc11941990851ebf6.bundle.js"></script>
+<head><link rel="shortcut icon" href="/doughnut.png"><link href="/app.6745eb08fdda9263031a.css" rel="stylesheet"></head><!DOCTYPE html>
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible", content="ie=edge")
+		title #{title || h.siteName}
+		script(type="text/javascript").
+			if (window.location.hash && window.location.hash == '#_=_') {
+				if (window.history && history.pushState) {
+				window.history.pushState("", document.title, window.location.pathname);
+				} else {
+				// Prevent scrolling by storing the page's current scroll offset
+				var scroll = {
+				top: document.body.scrollTop,
+				left: document.body.scrollLeft
+				};
+				window.location.hash = '';
+				// Restore the scroll offset, should be flicker free
+				document.body.scrollTop = scroll.top;
+				document.body.scrollLeft = scroll.left;
+				}
+			}
+	body
+		block header
+			header.top
+				nav.nav
+					.nav__section.nav__section--pages
+						li.nav__item: a.nav__link.nav__link--logo(href="/") !{h.icon("logo")}
+						each item in h.menu
+							li.nav__item
+								a.nav__link(href=item.slug class=path.startsWith(item.slug)?"nav__link--active":"") !{h.icon(item.icon)}
+									span #{item.title}
+					.nav__section.nav__section--search
+						.search
+							input.search__input(type="text" name="search" placeholder="Coffee, beer...")
+							.search__results
+					.nav__section.nav__section--user
+						if user
+							li.nav__item: a.nav__link(href="/hearts" class=(path.startsWith("/hearts") ? "nav__link--active" : "")) !{h.icon("heart")}
+								span.heart-count #{user.hearts && user.hearts}
+							li.nav__item: a.nav__link(href="/logout" class=(path.startsWith("/logout") ? "nav__link--active" : "")) !{h.icon("logout")}
+								span Logout
+							li.nav__item: a.nav__link(href="/account" class=(path.startsWith("/account") ? "nav__link--active" : ""))
+								img.avatar(src=h.showAvatar(user.avatar))
+						else
+							li.nav__item: a.nav__link(href="/register" class=(path.startsWith("/register") ? "nav__link--active" : "")) Register
+							li.nav__item: a.nav__link(href="/login" class=(path.startsWith("/login") ? "nav__link--active" : "")) Log In
+
+		block messages
+			if flashes
+				.inner
+					.flash-messages
+						each category in Object.keys(flashes)
+							each message,index in flashes[category]
+								.flash(class=`flash--${category}` id=`${category}${index}`)
+									p.flash__text !{h.pureDom(message,{ALLOWED_TAGS: ["p","#text","strong","a"]})}
+									script(type="text/javascript") setTimeout(()=>document.querySelector("##{`${category}${index}`}").remove(),15000);
+									button.flash__remove(onClick="this.parentElement.remove()") &times;
+
+
+		block content
+
+		footer
+			block footer
+				p.text-center (C) wes bos
+		script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+<script src="/vendors~app.6745eb08fdda9263031a.bundle.js"></script><script src="/app.6745eb08fdda9263031a.bundle.js"></script>

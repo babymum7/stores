@@ -101,7 +101,7 @@ exports.updateStore = catchErrors(async (req, res) => {
     'success',
     `Successfully updated <strong>${store.name}</strong>. <a href="/store/${store.slug}">View Store</a>`
   );
-  res.redirect(`/store/${store._id}/edit`);
+  res.redirect(`/store/edit/${store._id}`);
 });
 
 exports.getTopStores = catchErrors(async (req, res) => {
