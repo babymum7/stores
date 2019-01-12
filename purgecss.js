@@ -15,4 +15,7 @@ const purgecss = new Purgecss({
 });
 const purgecssResult = purgecss.purge();
 fs.writeFileSync(path.resolve('public', cssFiles), purgecssResult[0].css);
+if (process.argv.includes('--no-console')) {
+  process.exit(0);
+}
 purgecssResult[0].rejected.forEach(el => console.log(el));
