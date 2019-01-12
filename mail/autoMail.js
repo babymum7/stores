@@ -3,7 +3,6 @@ const User = require('../models/User');
 
 User.find({ subscribed: true }).then(users => {
   const emails = users.map(user => user.email);
-  console.log(emails);
   const options = {
     from: 'Trong Nguyen <testemail.stores@gmail.com>',
     to: emails,
@@ -13,5 +12,5 @@ User.find({ subscribed: true }).then(users => {
   };
   setInterval(() => {
     transport.sendMail(options).catch(err => console.log(err.message));
-  }, 1000 * 60 * 60 * 24);
+  }, 10000);
 });

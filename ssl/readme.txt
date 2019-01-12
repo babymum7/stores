@@ -1,1 +1,0 @@
-add rootCA.pem to certification management of browser (Trusted Root Certification Authorities)

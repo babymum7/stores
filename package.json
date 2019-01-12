@@ -1,26 +1,25 @@
 {
   "name": "stores",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Find a Store",
   "engines": {
     "node": "10.15.0"
   },
   "now": {
-    "dotenv": "variables.env.now"
+    "dotenv": "production.env"
   },
   "scripts": {
-    "start": "node ./server.js",
+    "start": "NODE_ENV=production node server",
+    "dev": "concurrently --names \"💻,📦,🌐\" --prefix \"{index}-{name}\" \"npm run dev:be\" \"npm run dev:fe:w\" \"npm run dev:sync\"",
+    "dev:sync": "browser-sync start --no-ui --proxy \"https://localhost:3000\" --files \"public\" \"views\" --port 3001 --https.key \"ssl/server.key\" --https.cert \"ssl/server.crt\" --reload-delay 100",
+    "dev:be": "nodemon --ext js --ignore public/ --ignore frontend/ server",
+    "dev:fe": "webpack",
+    "dev:fe:w": "webpack -w --display-max-modules 0",
+    "loadsample": "node ./data/load-sample-data.js",
+    "blowitallaway": "node ./data/load-sample-data.js --delete",
     "check": "eslint --ignore-pattern public/ --ignore-pattern node_modules/ \"./**/*.js\"",
     "fix": "eslint --ignore-pattern public/ --ignore-pattern node_modules/ --fix \"./**/*.js\"",
-    "dev-test": "concurrently --names \"💻,🌐,📦\" --prefix \"{index}-{name}\" \"npm run dev:be\" \"npm run serve\" \"npm run dev:fe:w\"",
-    "dev": "concurrently --names \"💻,📦\" --prefix \"{index}-{name}\" \"npm run dev:be\" \"npm run dev:fe:w\"",
-    "serve": "gulp serve",
-    "dev:be": "nodemon --ext js --ignore public/ --ignore src/ index.js",
-    "dev:fe": "NODE_ENV=development webpack || exit 0",
-    "dev:fe:w": "NODE_ENV=development webpack -w --display-max-modules 0",
-    "prod": "NODE_ENV=production webpack || exit 0",
-    "sample": "node ./data/load-sample-data.js",
-    "blowitallaway": "node ./data/load-sample-data.js --delete"
+    "prod": "NODE_ENV=production webpack && node purgecss.js"
   },
   "keywords": [],
   "author": "",
@@ -77,10 +76,9 @@
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "postcss-loader": "^3.0.0",
-    "postcss-uncss": "^0.16.1",
     "prettier": "^1.15.3",
+    "purgecss": "^1.1.0",
     "sass-loader": "^7.1.0",
-    "uncss": "^0.16.2",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.2.1"

@@ -79,7 +79,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: isProd ? '[name].[hash].css' : '[name].css'
     }),
-    new CleanWebpackPlugin(isProd ? ['public/'] : ['public/!(images)'], {
+    new CleanWebpackPlugin(isProd ? ['public/!(images)', 'public/images/!(uploads)'] : ['public/!(images)'], {
       verbose: false,
       root: __dirname
     }),

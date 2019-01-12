@@ -13,6 +13,7 @@
     "consistent-return": 0,
     "global-require": 0,
     "func-names": [0, "as-needed"],
+    "import/no-extraneous-dependencies": 0,
     "no-unused-vars": [
       1,
       {

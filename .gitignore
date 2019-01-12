@@ -5,6 +5,7 @@
 !/public/images
 /public/images/*
 !/public/images/uploads
+/html
 .DS_Store
 development.env
 production.env
