@@ -11,7 +11,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENTID,
       clientSecret: process.env.GOOGLE_CLIENTSECRET,
-      callbackURL: '/auth/google/callback'
+      callbackURL: `${process.env.NODE_ENV === 'production' ? process.env.HOST : ''}/auth/facebook/callback`
     },
     catchErrors(async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ google: profile.id });
@@ -36,7 +36,7 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_CLIENTID,
       clientSecret: process.env.FACEBOOK_CLIENTSECRET,
-      callbackURL: '/auth/facebook/callback',
+      callbackURL: `${process.env.NODE_ENV === 'production' ? process.env.HOST : ''}/auth/facebook/callback`,
       authType: 'rerequest',
       enableProof: true,
       profileFields: ['id', 'displayName', 'picture', 'link', 'email']
