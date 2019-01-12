@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node server",
+    "heroku-postbuild": "yarn prod",
     "dev": "concurrently --names \"💻,📦,🌐\" --prefix \"{index}-{name}\" \"npm run dev:be\" \"npm run dev:fe:w\" \"npm run dev:sync\"",
     "dev:sync": "browser-sync start --no-ui --proxy \"https://localhost:3000\" --files \"public\" \"views\" --port 3001 --https.key \"ssl/server.key\" --https.cert \"ssl/server.crt\" --reload-delay 100",
     "dev:be": "nodemon --ext js --ignore public/ --ignore frontend/ server",
