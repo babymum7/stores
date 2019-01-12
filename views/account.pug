@@ -11,11 +11,12 @@ block content
 			label(for="name") Name
 			input(type="text" name="name" value=user.name)
 			label(for="email") Email Address
-			input(type="email" name="email" value=user.email)
-			label(for="old-password") Old Password
-			input(type="password" name="old-password")
-			label(for="password") New Password
-			input(type="password" name="password")
-			label(for="password-confirm") Confirm Password
-			input.mb-4(type="password" name="password-confirm")
+			input(class=!user.username && 'mb-4' type="email" name="email" value=user.email)
+			if user.username
+				label(for="old-password") Old Password
+				input(type="password" name="old-password")
+				label(for="password") New Password
+				input(type="password" name="password")
+				label(for="password-confirm") Confirm Password
+				input.mb-4(type="password" name="password-confirm")
 			button.btn.btn-rounded.btn-block.aqua-gradient(type="submit") Update My Account
