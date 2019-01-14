@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && !process.env.HEROKU) {
   const cluster = require('cluster');
   const numCPUs = require('os').cpus();
 
