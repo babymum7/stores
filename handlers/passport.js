@@ -39,7 +39,7 @@ passport.use(
       callbackURL: `${process.env.NODE_ENV === 'production' ? process.env.HOST : ''}/auth/facebook/callback`,
       authType: 'rerequest',
       enableProof: true,
-      profileFields: ['id', 'displayName', 'picture', 'link', 'email']
+      profileFields: ['id', 'displayName', 'picture', 'email']
     },
     catchErrors(async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ facebook: profile.id });
