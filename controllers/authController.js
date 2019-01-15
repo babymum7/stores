@@ -68,7 +68,7 @@ exports.authGoogleCb = passport.authenticate('google', {
 
 exports.authFacebook = passport.authenticate('facebook', {
   authType: 'rerequest',
-  scope: ['user_link', 'email']
+  scope: ['email']
 });
 exports.authFacebookCb = passport.authenticate('facebook', {
   failureRedirect: '/login',
