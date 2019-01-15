@@ -6,6 +6,7 @@ const { catchErrors } = require('./errorHandlers');
 const User = require('../models/User');
 
 passport.use(User.createStrategy());
+
 passport.use(
   new GoogleStrategy(
     {
