@@ -7,8 +7,8 @@
 !/public/images/uploads
 /html
 .DS_Store
-development.env
-production.env
+*.env
+!sample.env
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
